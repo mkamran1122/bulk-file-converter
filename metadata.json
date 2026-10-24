@@ -1,0 +1,6 @@
+{
+  "name": "FileBatch",
+  "description": "Convert hundreds of JPG, PNG, and WebP images directly in your browser. Fast, bulk image conversion with zero server uploads.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
