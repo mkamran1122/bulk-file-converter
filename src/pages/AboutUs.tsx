@@ -1,6 +1,6 @@
 import React from 'react';
 import { BRAND_CONFIG } from '../config/brand';
-import { ShieldCheck, Cpu, Zap, Lock, EyeOff, Sparkles, HeartHandshake, CheckCircle2, ArrowRight } from 'lucide-react';
+import { ShieldCheck, Cpu, EyeOff, Sparkles, HeartHandshake, CheckCircle2, ArrowRight } from 'lucide-react';
 import { SEOHead } from '../components/SEOHead';
 
 interface AboutUsProps {
@@ -11,10 +11,34 @@ export const AboutUs: React.FC<AboutUsProps> = ({ onNavigateHome }) => {
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-16 animate-in fade-in duration-200">
       <SEOHead
-        title={`About ${BRAND_CONFIG.name} – Our Mission & Client-Side Privacy Architecture`}
-        description={`Learn why ${BRAND_CONFIG.name} was built: providing fast, 100% in-browser bulk image conversion with zero server uploads, no data retention, and no watermarks.`}
+        title="About FileBatch by MK Labs — 100% In-Browser File Tools"
+        description="Learn about FileBatch, developed by MK Labs to make everyday image conversion and PDF tasks fast, accessible, and completely private in your browser."
         canonicalPath="#about"
+        type="website"
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@type': 'AboutPage',
+          'name': 'About FileBatch',
+          'description': 'Information about FileBatch, a private client-side file conversion tool developed by MK Labs.',
+          'publisher': {
+            '@type': 'Organization',
+            'name': 'MK Labs',
+            'logo': 'https://filebatch.netlify.app/assets/aistudio/MK_Labs_703312e1.jpg',
+          },
+          'mainEntity': {
+            '@type': 'SoftwareApplication',
+            'name': 'FileBatch',
+            'applicationCategory': 'UtilitiesApplication',
+            'operatingSystem': 'All',
+            'offers': {
+              '@type': 'Offer',
+              'price': '0',
+              'priceCurrency': 'USD',
+            },
+          },
+        }}
       />
+
       {/* Hero Header */}
       <div className="text-center space-y-4 max-w-3xl mx-auto">
         <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-200/70 text-indigo-700 text-xs font-semibold uppercase tracking-wider">
@@ -22,11 +46,31 @@ export const AboutUs: React.FC<AboutUsProps> = ({ onNavigateHome }) => {
           <span>Our Story & Mission</span>
         </div>
         <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
-          About {BRAND_CONFIG.name}
+          About FileBatch
         </h1>
         <p className="text-lg text-slate-600 leading-relaxed">
-          We built {BRAND_CONFIG.name} on a simple conviction: you shouldn’t have to upload personal, medical, legal, or proprietary photos to unknown cloud servers just to change an image format.
+          FileBatch is a client-side digital product developed and owned by <strong className="text-slate-800">MK Labs</strong>. Our goal is to make everyday file-related tasks simpler, faster, and completely private.
         </p>
+      </div>
+
+      {/* MK Labs Introduction Banner */}
+      <div className="bg-white rounded-3xl border border-slate-200 p-8 shadow-xs flex flex-col sm:flex-row items-center gap-6">
+        <img
+          src="/assets/aistudio/MK_Labs_703312e1.jpg"
+          alt="MK Labs logo"
+          className="w-20 h-20 rounded-2xl object-contain bg-black border border-slate-200 shrink-0 shadow-sm"
+          width={80}
+          height={80}
+        />
+        <div className="space-y-2 text-center sm:text-left">
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-slate-100 text-[11px] font-bold uppercase tracking-wider text-slate-700">
+            Product by MK Labs
+          </div>
+          <h2 className="text-xl font-bold text-slate-900">Developed and Owned by MK Labs</h2>
+          <p className="text-sm text-slate-600 leading-relaxed">
+            MK Labs develops useful digital products and online tools designed to solve real-world problems with elegance and efficiency. FileBatch is built specifically to address the privacy and speed challenges of converting files online. We believe you should never have to upload personal, business, or sensitive documents to unknown cloud servers just to change an image format or combine images into a PDF.
+          </p>
+        </div>
       </div>
 
       {/* The Problem & Our Solution */}
@@ -38,11 +82,11 @@ export const AboutUs: React.FC<AboutUsProps> = ({ onNavigateHome }) => {
             </div>
             <h2 className="text-xl font-bold text-slate-900">The Problem with Traditional Converters</h2>
             <p className="text-sm text-slate-600 leading-relaxed">
-              Most online file conversion tools force you to upload your files to remote servers. This consumes upload bandwidth, introduces latency, and creates significant privacy vulnerabilities. Uploaded files often linger in temporary server caches, remote databases, or cloud buckets with ambiguous data retention policies.
+              Most online file conversion websites require you to upload your files to remote cloud servers. This consumes upload bandwidth, introduces artificial queue delays, and poses severe privacy risks. Uploaded images frequently linger in temporary cloud caches, remote logs, and third-party storage.
             </p>
           </div>
           <div className="pt-4 border-t border-slate-100 text-xs text-rose-700 font-medium">
-            Risk: Potential file leaks, server log tracking, and bandwidth caps.
+            Common risks: Data retention, third-party inspection, bandwidth caps, and forced watermarks.
           </div>
         </div>
 
@@ -52,14 +96,14 @@ export const AboutUs: React.FC<AboutUsProps> = ({ onNavigateHome }) => {
             <div className="w-12 h-12 rounded-2xl bg-indigo-600 text-white flex items-center justify-center font-bold shadow-sm shadow-indigo-200">
               <Cpu className="w-6 h-6" />
             </div>
-            <h2 className="text-xl font-bold text-slate-900">The {BRAND_CONFIG.name} Client-Side Approach</h2>
+            <h2 className="text-xl font-bold text-slate-900">The FileBatch In-Browser Architecture</h2>
             <p className="text-sm text-slate-600 leading-relaxed">
-              {BRAND_CONFIG.name} runs 100% inside your modern web browser. Using the HTML5 Canvas API, OffscreenCanvas, and JSZip, your device’s own CPU and graphics hardware perform the mathematical image decoding, compression, and packaging.
+              FileBatch runs 100% inside your web browser. Utilizing the HTML5 Canvas API, Web Workers, and client-side PDF libraries, your own device’s hardware performs image decoding, re-encoding, and PDF compilation locally in memory.
             </p>
           </div>
           <div className="pt-4 border-t border-slate-100 text-xs text-indigo-700 font-semibold relative z-10 flex items-center gap-1.5">
             <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-            <span>Result: Zero network uploads, instant processing, absolute data privacy.</span>
+            <span>Result: Zero network uploads, instant processing, absolute privacy.</span>
           </div>
         </div>
       </div>
@@ -71,7 +115,7 @@ export const AboutUs: React.FC<AboutUsProps> = ({ onNavigateHome }) => {
             Our Guiding Principles
           </h2>
           <p className="text-sm text-slate-600 mt-2">
-            Every feature we design adheres to these core ethical and technical standards.
+            Every feature in FileBatch adheres to these core ethical and technical standards.
           </p>
         </div>
 
@@ -82,59 +126,27 @@ export const AboutUs: React.FC<AboutUsProps> = ({ onNavigateHome }) => {
             </div>
             <h3 className="text-base font-bold text-slate-900">Guaranteed Privacy</h3>
             <p className="text-xs text-slate-600 leading-relaxed">
-              We never inspect, log, or harvest your images. When you close the browser tab, in-memory object references are immediately cleared by your operating system.
+              Files are never sent across the internet. When you close the browser tab, all temporary in-memory blobs are immediately cleared by your operating system.
             </p>
           </div>
 
           <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs space-y-3">
             <div className="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center">
-              <Zap className="w-5 h-5" />
+              <Sparkles className="w-5 h-5" />
             </div>
-            <h3 className="text-base font-bold text-slate-900">Uncompromised Speed</h3>
+            <h3 className="text-base font-bold text-slate-900">High Speed & Convenience</h3>
             <p className="text-xs text-slate-600 leading-relaxed">
-              By removing the network bottleneck, files convert as quickly as your hardware allows. Converting 50 images locally takes a fraction of the time required to upload them.
+              By eliminating upload and download bottlenecks, batch converting 50 images or combining a multi-page PDF completes in mere seconds.
             </p>
           </div>
 
           <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs space-y-3">
             <div className="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center">
-              <Lock className="w-5 h-5" />
+              <CheckCircle2 className="w-5 h-5" />
             </div>
-            <h3 className="text-base font-bold text-slate-900">No Paywalls or Watermarks</h3>
+            <h3 className="text-base font-bold text-slate-900">Accessible to Everyone</h3>
             <p className="text-xs text-slate-600 leading-relaxed">
-              Every tool is free to use. We do not insert forced watermarks, artificial compression limits, or deceptive trial timers.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Technical Architecture Overview */}
-      <div className="bg-slate-900 text-white rounded-3xl p-8 sm:p-10 shadow-lg space-y-6">
-        <div>
-          <span className="text-xs font-bold uppercase tracking-wider text-indigo-400">Under the Hood</span>
-          <h2 className="text-2xl font-bold mt-1 text-white">How the Technology Works</h2>
-          <p className="text-sm text-slate-300 mt-2 max-w-2xl leading-relaxed">
-            Our codebase is constructed with TypeScript, React, and native browser Web APIs. Here is how your browser processes each image:
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-2">
-          <div className="p-4 rounded-xl bg-slate-800/80 border border-slate-700/80 space-y-2">
-            <div className="text-xs font-mono font-bold text-indigo-400">01. Binary Signature Check</div>
-            <p className="text-xs text-slate-300">
-              The first bytes (magic numbers) of each file are verified to ensure only valid JPEG, PNG, or WebP files are submitted for rendering, preventing decoder crashes.
-            </p>
-          </div>
-          <div className="p-4 rounded-xl bg-slate-800/80 border border-slate-700/80 space-y-2">
-            <div className="text-xs font-mono font-bold text-indigo-400">02. Hardware-Accelerated Canvas</div>
-            <p className="text-xs text-slate-300">
-              The browser decompresses pixel data directly into an in-memory canvas context, managing alpha transparency preservation and custom matte fills.
-            </p>
-          </div>
-          <div className="p-4 rounded-xl bg-slate-800/80 border border-slate-700/80 space-y-2">
-            <div className="text-xs font-mono font-bold text-indigo-400">03. In-Memory ZIP Bundling</div>
-            <p className="text-xs text-slate-300">
-              JSZip compiles completed files directly into a memory buffer, triggering a native browser download with automatic name collision avoidance.
+              No subscriptions, no accounts, and no deceptive watermarks. MK Labs builds FileBatch as an open, accessible utility for students, creators, and professionals.
             </p>
           </div>
         </div>
@@ -142,9 +154,9 @@ export const AboutUs: React.FC<AboutUsProps> = ({ onNavigateHome }) => {
 
       {/* CTA Box */}
       <div className="bg-white rounded-3xl border border-slate-200 p-8 sm:p-10 text-center space-y-5 shadow-xs">
-        <h2 className="text-2xl font-bold text-slate-900">Ready to convert your images?</h2>
+        <h2 className="text-2xl font-bold text-slate-900">Ready to convert your files?</h2>
         <p className="text-sm text-slate-600 max-w-md mx-auto">
-          Start your first batch in seconds with total peace of mind.
+          Start your first batch in seconds with complete peace of mind.
         </p>
         <div>
           <button
@@ -152,7 +164,7 @@ export const AboutUs: React.FC<AboutUsProps> = ({ onNavigateHome }) => {
             type="button"
             className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-bold text-sm bg-indigo-600 hover:bg-indigo-700 text-white shadow-md shadow-indigo-100 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-600"
           >
-            <span>Open Bulk Image Converter</span>
+            <span>Open Bulk File Converter</span>
             <ArrowRight className="w-4 h-4" />
           </button>
         </div>

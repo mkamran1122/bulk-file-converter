@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowLeft, CheckCircle2, AlertTriangle, ArrowRight, FileImage, Sparkles, HelpCircle, BookOpen } from 'lucide-react';
+import { ArrowLeft, CheckCircle2, AlertTriangle, ArrowRight, BookOpen, Sparkles, HelpCircle } from 'lucide-react';
 import { SEOHead } from '../../components/SEOHead';
 import { AdSenseNotice } from '../../components/AdSenseNotice';
 
@@ -12,8 +12,8 @@ export const JpgToPngGuide: React.FC<GuideProps> = ({ onStartConverting, onNavig
   return (
     <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-12 text-slate-700 animate-in fade-in duration-200">
       <SEOHead
-        title="JPG to PNG Conversion Guide: Lossless Archiving & Alpha Transparency"
-        description="Learn how converting JPEG to PNG halts generational quality loss, supports full 8-bit alpha transparency, and eliminates compression artifacts."
+        title="JPG to PNG Guide: Lossless Quality & Transparency | FileBatch"
+        description="Convert lossy JPG photos to lossless PNG files. Stop generational quality loss, enable transparent backgrounds, and prepare images for editing."
         canonicalPath="#guide-jpg-to-png"
         type="article"
         jsonLd={{
@@ -23,16 +23,17 @@ export const JpgToPngGuide: React.FC<GuideProps> = ({ onStartConverting, onNavig
           'description': 'A complete technical guide on converting lossy JPEG files to lossless PNGs with alpha channel transparency.',
           'author': {
             '@type': 'Organization',
-            'name': 'FileBatch',
+            'name': 'MK Labs',
           },
           'publisher': {
             '@type': 'Organization',
-            'name': 'FileBatch',
+            'name': 'MK Labs',
           },
         }}
       />
+
       {/* Navigation Breadcrumb */}
-      <div className="flex items-center gap-2 text-xs font-medium text-slate-500">
+      <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs font-medium text-slate-500">
         <button
           onClick={onNavigateHome}
           className="hover:text-indigo-600 transition-colors inline-flex items-center gap-1"
@@ -44,7 +45,7 @@ export const JpgToPngGuide: React.FC<GuideProps> = ({ onStartConverting, onNavig
         <span className="text-slate-800 font-semibold">Guides</span>
         <span>/</span>
         <span className="text-indigo-600">JPG to PNG Conversion Guide</span>
-      </div>
+      </nav>
 
       {/* Hero Header */}
       <header className="space-y-4 border-b border-slate-200 pb-8">
@@ -68,83 +69,53 @@ export const JpgToPngGuide: React.FC<GuideProps> = ({ onStartConverting, onNavig
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
           <div className="p-3.5 bg-slate-50 rounded-xl border border-slate-100 space-y-1">
-            <span className="font-bold text-slate-900 block">Lossless Archiving</span>
-            <span className="text-slate-600">Once converted to PNG, you can save and edit repeatedly without losing any further pixel clarity.</span>
+            <span className="font-bold text-slate-900 block">Lossless vs Lossy</span>
+            <span className="text-slate-600">JPEG discards high-frequency pixel data permanently. PNG preserves every decoded pixel without further loss.</span>
           </div>
           <div className="p-3.5 bg-slate-50 rounded-xl border border-slate-100 space-y-1">
             <span className="font-bold text-slate-900 block">Alpha Transparency</span>
-            <span className="text-slate-600">PNG supports full 8-bit alpha channels, allowing you to isolate subjects and remove solid backgrounds.</span>
+            <span className="text-slate-600">JPEG has zero alpha channel support. PNG gives you full 8-bit transparency for layered compositing.</span>
           </div>
           <div className="p-3.5 bg-slate-50 rounded-xl border border-slate-100 space-y-1">
             <span className="font-bold text-slate-900 block">File Size Reality</span>
-            <span className="text-slate-600">PNG files are usually larger than original JPEGs because PNG uses lossless DEFLATE compression.</span>
+            <span className="text-slate-600">PNG files are almost always larger than original JPGs because PNG retains complete raw pixel maps.</span>
           </div>
         </div>
       </div>
 
-      {/* Section 1: The Core Differences */}
+      {/* Section 1: The Technical Differences */}
       <section className="space-y-4">
         <h2 className="text-2xl font-bold text-slate-900 tracking-tight">
-          1. Understanding JPG vs. PNG Compression
+          1. The Technical Difference: Lossy JPEG vs Lossless PNG
         </h2>
-        <p>
-          JPEG (Joint Photographic Experts Group) and PNG (Portable Network Graphics) are designed for fundamentally divergent imaging priorities:
+        <p className="text-sm leading-relaxed text-slate-600">
+          The Joint Photographic Experts Group created the <strong>JPEG (JPG)</strong> format in 1992 specifically for real-world continuous-tone photography. JPEG employs a mathematical process called Discrete Cosine Transform (DCT) combined with color subsampling. This intentionally discards fine color variations that human eyes struggle to perceive, achieving remarkably compact file sizes.
         </p>
-        <div className="overflow-x-auto">
-          <table className="w-full text-xs text-left border border-slate-200 rounded-xl overflow-hidden">
-            <thead className="bg-slate-100 text-slate-700 font-semibold uppercase tracking-wider">
-              <tr>
-                <th className="py-3 px-4">Attribute</th>
-                <th className="py-3 px-4">JPEG (.jpg, .jpeg)</th>
-                <th className="py-3 px-4">PNG (.png)</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-100 bg-white">
-              <tr>
-                <td className="py-2.5 px-4 font-semibold text-slate-900">Compression Type</td>
-                <td className="py-2.5 px-4 text-amber-700">Lossy (DCT Discrete Cosine Transform)</td>
-                <td className="py-2.5 px-4 text-emerald-700">Lossless (2D Filtering + DEFLATE)</td>
-              </tr>
-              <tr>
-                <td className="py-2.5 px-4 font-semibold text-slate-900">Transparency</td>
-                <td className="py-2.5 px-4 text-slate-500">Not Supported (Requires solid background)</td>
-                <td className="py-2.5 px-4 text-emerald-700">Full 8-bit Alpha Channel (256 levels)</td>
-              </tr>
-              <tr>
-                <td className="py-2.5 px-4 font-semibold text-slate-900">Ideal Use Case</td>
-                <td className="py-2.5 px-4">Photographs, landscapes, complex gradients</td>
-                <td className="py-2.5 px-4">Logos, charts, UI screenshots, vector exports</td>
-              </tr>
-              <tr>
-                <td className="py-2.5 px-4 font-semibold text-slate-900">Generational Loss</td>
-                <td className="py-2.5 px-4 text-rose-600">Yes (Degrades with each re-save)</td>
-                <td className="py-2.5 px-4 text-emerald-700">Zero (Exact pixels preserved forever)</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <p className="text-sm leading-relaxed text-slate-600">
+          Conversely, <strong>Portable Network Graphics (PNG)</strong> was created in 1996 as an open, patent-free replacement for GIF. PNG uses the DEFLATE compression algorithm (a combination of LZ77 and Huffman coding). Because DEFLATE is strictly lossless, decoding a PNG file reconstructs the original pixel grid byte-for-byte with zero deviation.
+        </p>
       </section>
 
-      {/* Section 2: Why Convert JPG to PNG? */}
+      {/* Section 2: When Should You Convert? */}
       <section className="space-y-4">
         <h2 className="text-2xl font-bold text-slate-900 tracking-tight">
-          2. Top Reasons to Convert JPG to PNG
+          2. When Should You Convert JPG to PNG?
         </h2>
         <div className="space-y-3">
           <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-2xs space-y-1.5">
             <h3 className="font-bold text-slate-900 text-sm flex items-center gap-2">
               <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-              <span>A. Halting Generational Quality Loss</span>
+              <span>A. Halting Generational Degradation</span>
             </h3>
             <p className="text-xs text-slate-600 leading-relaxed">
-              Every time you open, modify, and re-save a JPEG file, the lossy algorithm discards high-frequency color detail anew. Converting your image to PNG creates an unalterable master file that can be opened, rotated, annotated, and re-saved indefinitely without introducing "mosquito noise" or blocky 8x8 macroblock artifacts.
+              Every time you open, edit, and re-save a JPEG file, it gets re-compressed through the DCT lossy pipeline. Over multiple revisions, "compression ringing" and digital noise multiply around high-contrast edges. Converting your initial master file to PNG freezes the image in its current state, ensuring subsequent saves produce zero additional artifacts.
             </p>
           </div>
 
           <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-2xs space-y-1.5">
             <h3 className="font-bold text-slate-900 text-sm flex items-center gap-2">
               <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-              <span>B. Preparing Files for Background Removal</span>
+              <span>B. Preparing for Transparency Layering</span>
             </h3>
             <p className="text-xs text-slate-600 leading-relaxed">
               If you plan to cut out a product, portrait, or logo in software like Photoshop, Figma, or GIMP, JPEG cannot store transparent pixels. Converting to PNG allows the graphic editor to write transparent pixels directly into the file's alpha layer.
@@ -154,7 +125,7 @@ export const JpgToPngGuide: React.FC<GuideProps> = ({ onStartConverting, onNavig
           <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-2xs space-y-1.5">
             <h3 className="font-bold text-slate-900 text-sm flex items-center gap-2">
               <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-              <span>C. Software & Print Compatibility</span>
+              <span>C. Software & Print Specifications</span>
             </h3>
             <p className="text-xs text-slate-600 leading-relaxed">
               Many corporate documentation suites, LaTeX compilers, printing presses, and graphic design templates explicitly mandate PNG for non-photographic charts, diagrams, and corporate iconography.
@@ -193,6 +164,83 @@ export const JpgToPngGuide: React.FC<GuideProps> = ({ onStartConverting, onNavig
             <strong>Download:</strong> Save individual images or click <strong>Download All as ZIP</strong> for a neat, collision-free archive.
           </li>
         </ol>
+      </section>
+
+      {/* Frequently Asked Questions */}
+      <section className="space-y-4 border-t border-slate-200 pt-8">
+        <div className="flex items-center gap-2">
+          <HelpCircle className="w-5 h-5 text-indigo-600" />
+          <h2 className="text-2xl font-bold text-slate-900 tracking-tight">
+            JPG to PNG Frequently Asked Questions
+          </h2>
+        </div>
+
+        <div className="space-y-3 text-xs sm:text-sm">
+          <div className="bg-white border border-slate-200 rounded-2xl p-4 space-y-1.5">
+            <h3 className="font-bold text-slate-900">Will converting JPG to PNG improve existing image quality?</h3>
+            <p className="text-slate-600 leading-relaxed">
+              No. Once JPEG compression has discarded color information, converting to PNG cannot restore it. However, it freezes the image so that future edits and saves never degrade it further.
+            </p>
+          </div>
+
+          <div className="bg-white border border-slate-200 rounded-2xl p-4 space-y-1.5">
+            <h3 className="font-bold text-slate-900">Does converting JPG to PNG make the background transparent?</h3>
+            <p className="text-slate-600 leading-relaxed">
+              Converting alone does not remove the background because original JPG images have solid backgrounds (often white). However, saving as PNG gives the file an alpha channel, allowing you to easily remove the background in an editor.
+            </p>
+          </div>
+
+          <div className="bg-white border border-slate-200 rounded-2xl p-4 space-y-1.5">
+            <h3 className="font-bold text-slate-900">Why is the converted PNG larger in file size?</h3>
+            <p className="text-slate-600 leading-relaxed">
+              PNG uses lossless compression, preserving every single pixel without approximations. JPEGs achieve smaller sizes by throwing away subtle color details.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Internal Links: Related Guides */}
+      <section className="space-y-4 border-t border-slate-200 pt-8">
+        <h2 className="text-lg font-bold text-slate-900 tracking-tight">
+          Related Image Optimization Guides
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+          <button
+            type="button"
+            onClick={() => {
+              window.location.hash = 'guide-png-to-webp';
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            className="p-3.5 bg-white border border-slate-200 rounded-xl hover:border-indigo-300 text-left transition-colors group"
+          >
+            <span className="font-bold text-slate-900 block group-hover:text-indigo-600">PNG to WebP Guide</span>
+            <span className="text-slate-500 mt-1 block">Reduce transparent image file size by 30% to 45%.</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => {
+              window.location.hash = 'guide-webp-to-jpg';
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            className="p-3.5 bg-white border border-slate-200 rounded-xl hover:border-indigo-300 text-left transition-colors group"
+          >
+            <span className="font-bold text-slate-900 block group-hover:text-indigo-600">WebP to JPG Guide</span>
+            <span className="text-slate-500 mt-1 block">Restore universal compatibility for legacy software and print.</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => {
+              window.location.hash = 'guide-image-optimization';
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            className="p-3.5 bg-white border border-slate-200 rounded-xl hover:border-indigo-300 text-left transition-colors group"
+          >
+            <span className="font-bold text-slate-900 block group-hover:text-indigo-600">Optimization Handbook</span>
+            <span className="text-slate-500 mt-1 block">Compare formats, compression trade-offs, and web speed tips.</span>
+          </button>
+        </div>
       </section>
 
       {/* AdSense In-Article Notice Slot */}

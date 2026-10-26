@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowLeft, CheckCircle2, Zap, ArrowRight, BookOpen, Layers, Sliders, ShieldCheck } from 'lucide-react';
+import { ArrowLeft, CheckCircle2, Zap, ArrowRight, BookOpen, Layers, Sliders, ShieldCheck, HelpCircle } from 'lucide-react';
 import { SEOHead } from '../../components/SEOHead';
 import { AdSenseNotice } from '../../components/AdSenseNotice';
 
@@ -12,8 +12,8 @@ export const ImageOptimizationGuide: React.FC<GuideProps> = ({ onStartConverting
   return (
     <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-12 text-slate-700 animate-in fade-in duration-200">
       <SEOHead
-        title="Image File Conversion & Web Optimization: The Complete Guide"
-        description="Master digital image optimization: lossy vs lossless compression, responsive pixel dimensions, WebP adoption, and performance checklists for web designers."
+        title="Image Optimization Handbook: Web Speed & Formats | FileBatch"
+        description="Master web image optimization. Compare lossy vs lossless formats, tune compression quality, adapt responsive dimensions, and improve Core Web Vitals."
         canonicalPath="#guide-image-optimization"
         type="article"
         jsonLd={{
@@ -23,16 +23,17 @@ export const ImageOptimizationGuide: React.FC<GuideProps> = ({ onStartConverting
           'description': 'A comprehensive handbook for balancing visual fidelity against file size, selecting image formats, and optimizing web speed.',
           'author': {
             '@type': 'Organization',
-            'name': 'FileBatch',
+            'name': 'MK Labs',
           },
           'publisher': {
             '@type': 'Organization',
-            'name': 'FileBatch',
+            'name': 'MK Labs',
           },
         }}
       />
+
       {/* Navigation Breadcrumb */}
-      <div className="flex items-center gap-2 text-xs font-medium text-slate-500">
+      <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs font-medium text-slate-500">
         <button
           onClick={onNavigateHome}
           className="hover:text-indigo-600 transition-colors inline-flex items-center gap-1"
@@ -44,7 +45,7 @@ export const ImageOptimizationGuide: React.FC<GuideProps> = ({ onStartConverting
         <span className="text-slate-800 font-semibold">Guides</span>
         <span>/</span>
         <span className="text-indigo-600">The Ultimate Image File Optimization Guide</span>
-      </div>
+      </nav>
 
       {/* Hero Header */}
       <header className="space-y-4 border-b border-slate-200 pb-8">
@@ -60,153 +61,155 @@ export const ImageOptimizationGuide: React.FC<GuideProps> = ({ onStartConverting
         </p>
       </header>
 
-      {/* Chapter 1: Lossy vs Lossless */}
+      {/* Key Decision Matrix */}
+      <div className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-xs space-y-4">
+        <h2 className="text-base font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2">
+          <Sliders className="w-4 h-4 text-indigo-600" />
+          <span>Format Selection Quick Matrix</span>
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+          <div className="p-4 bg-slate-50 rounded-2xl border border-slate-100 space-y-2">
+            <span className="font-bold text-slate-900 block text-sm">Real Photography</span>
+            <span className="text-xs text-indigo-600 font-bold block">Best: WebP (80–85%) or JPEG</span>
+            <p className="text-slate-600 leading-relaxed">Continuous color gradients and real-world textures compress gracefully under DCT lossy encoding without noticeable artifacts.</p>
+          </div>
+          <div className="p-4 bg-slate-50 rounded-2xl border border-slate-100 space-y-2">
+            <span className="font-bold text-slate-900 block text-sm">Graphics, Logos & UI</span>
+            <span className="text-xs text-blue-600 font-bold block">Best: PNG or WebP with Alpha</span>
+            <p className="text-slate-600 leading-relaxed">High-contrast solid borders, typography, and semi-transparent alpha dropshadows require lossless compression to avoid smudges.</p>
+          </div>
+          <div className="p-4 bg-slate-50 rounded-2xl border border-slate-100 space-y-2">
+            <span className="font-bold text-slate-900 block text-sm">Multi-Page Documents</span>
+            <span className="text-xs text-rose-600 font-bold block">Best: Images to PDF</span>
+            <p className="text-slate-600 leading-relaxed">Receipts, scanned forms, portfolios, and photo collections combined into a single organized multi-page document.</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Section 1: Core Web Vitals */}
       <section className="space-y-4">
         <h2 className="text-2xl font-bold text-slate-900 tracking-tight">
-          1. The Fundamentals: Lossy vs. Lossless Compression
+          1. Why Image Optimization Directly Impacts SEO & Core Web Vitals
         </h2>
-        <p>
-          At its core, digital image compression seeks to reduce storage requirements while preserving perceptual fidelity. All modern graphic formats fall into one of two mathematical paradigms:
+        <p className="text-sm leading-relaxed text-slate-600">
+          Images represent more than 50% of the total byte weight of average web pages worldwide. Google’s PageSpeed algorithm assesses three Core Web Vitals metrics when ranking search results:
         </p>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
-          <div className="p-6 bg-white border border-slate-200 rounded-2xl shadow-xs space-y-3">
-            <div className="w-10 h-10 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center font-bold text-sm">
-              LOSSY
-            </div>
-            <h3 className="text-lg font-bold text-slate-900">Lossy Compression (JPEG, WebP)</h3>
-            <p className="text-xs text-slate-600 leading-relaxed">
-              Lossy algorithms exploit human visual perception limitations. Human eyes are significantly more sensitive to variations in luminance (brightness) than chrominance (color). By selectively discarding imperceptible color subtleties and high-frequency noise, lossy formats reduce file weight by up to 80% with minimal perceived quality loss.
-            </p>
-            <div className="pt-2 text-[11px] text-amber-800 font-medium">
-              Best for: Natural photography, camera captures, complex gradients, continuous tones.
-            </div>
-          </div>
-
-          <div className="p-6 bg-white border border-slate-200 rounded-2xl shadow-xs space-y-3">
-            <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-700 flex items-center justify-center font-bold text-sm">
-              LOSSLESS
-            </div>
-            <h3 className="text-lg font-bold text-slate-900">Lossless Compression (PNG, Lossless WebP)</h3>
-            <p className="text-xs text-slate-600 leading-relaxed">
-              Lossless algorithms preserve every individual pixel value without alteration. Through horizontal filtering and dictionary substitution (such as the DEFLATE algorithm), recurring patterns of identical pixel color sequences are encoded into compact binary tokens.
-            </p>
-            <div className="pt-2 text-[11px] text-blue-800 font-medium">
-              Best for: Brand logos, user interface assets, screenshots, technical diagrams, line art.
-            </div>
-          </div>
-        </div>
+        <ul className="space-y-2 text-xs sm:text-sm text-slate-700 pl-4 list-disc">
+          <li><strong>Largest Contentful Paint (LCP):</strong> Measures the render time of the largest visual element (often a hero image). Excessive image weight directly delays this metric.</li>
+          <li><strong>Cumulative Layout Shift (CLS):</strong> Unoptimized image dimensions without aspect ratio definitions cause layout shifts when loaded.</li>
+          <li><strong>Interaction to Next Paint (INP):</strong> Huge image payloads clog the browser main thread during decompression, causing touch and scroll stutter on mobile devices.</li>
+        </ul>
       </section>
 
-      {/* Chapter 2: The Decision Matrix */}
+      {/* Section 2: Tuning Lossy Quality Factor */}
       <section className="space-y-4">
         <h2 className="text-2xl font-bold text-slate-900 tracking-tight">
-          2. The Format Decision Matrix: Which Format When?
+          2. The Science of the Quality Slider: Diminishing Returns
         </h2>
-        <div className="overflow-x-auto">
-          <table className="w-full text-xs text-left border border-slate-200 rounded-xl overflow-hidden">
-            <thead className="bg-slate-100 text-slate-700 font-semibold uppercase tracking-wider">
-              <tr>
-                <th className="py-3 px-4">Your Content Type</th>
-                <th className="py-3 px-4">Recommended Format</th>
-                <th className="py-3 px-4">Target Quality</th>
-                <th className="py-3 px-4">Why This Choice Wins</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-100 bg-white text-slate-700">
-              <tr>
-                <td className="py-3 px-4 font-semibold text-slate-900">Hero banner photos</td>
-                <td className="py-3 px-4 font-bold text-indigo-600">WebP</td>
-                <td className="py-3 px-4">80% – 85%</td>
-                <td className="py-3 px-4">Fastest LCP load speed on mobile networks.</td>
-              </tr>
-              <tr>
-                <td className="py-3 px-4 font-semibold text-slate-900">Transparent product cutouts</td>
-                <td className="py-3 px-4 font-bold text-indigo-600">WebP or PNG</td>
-                <td className="py-3 px-4">85% (WebP) or Lossless (PNG)</td>
-                <td className="py-3 px-4">WebP cuts PNG file size by 35% while retaining transparent alpha.</td>
-              </tr>
-              <tr>
-                <td className="py-3 px-4 font-semibold text-slate-900">Software UI screenshots</td>
-                <td className="py-3 px-4 font-bold text-blue-600">PNG</td>
-                <td className="py-3 px-4">Lossless</td>
-                <td className="py-3 px-4">Text and 1px UI borders stay razor-sharp without blur.</td>
-              </tr>
-              <tr>
-                <td className="py-3 px-4 font-semibold text-slate-900">Print brochure submissions</td>
-                <td className="py-3 px-4 font-bold text-amber-600">JPEG</td>
-                <td className="py-3 px-4">95% – 100%</td>
-                <td className="py-3 px-4">Universally accepted by commercial CMYK prepress pipelines.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      {/* Chapter 3: Dimensions & Resolution */}
-      <section className="bg-slate-50 border border-slate-200 rounded-3xl p-6 sm:p-8 space-y-4">
-        <h2 className="text-xl font-bold text-slate-900">
-          3. Sizing and Dimensions: The #1 Factor in File Size
-        </h2>
-        <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-          While compression ratios yield substantial savings, <strong>pixel dimensions</strong> dictate the raw uncompressed memory footprint. An image at 4000×3000 contains 12 million pixels, whereas a full-HD 1920×1080 version contains roughly 2 million pixels—an immediate 83% raw data reduction.
+        <p className="text-sm leading-relaxed text-slate-600">
+          Many beginners set image quality to 100%, assuming higher is always better. In reality, JPEG and WebP compression curves show steep diminishing returns past 85%:
         </p>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 text-xs">
-          <div className="p-3 bg-white rounded-xl border border-slate-200">
-            <span className="font-bold text-slate-800 block">Desktop Fullscreen</span>
-            <span className="text-slate-500 font-mono">1920×1080 px</span>
+        <div className="bg-slate-50 border border-slate-200/90 rounded-2xl p-5 text-xs text-slate-600 space-y-2">
+          <div className="flex justify-between items-center py-1 border-b border-slate-200 font-mono">
+            <span>Quality Setting: 100%</span>
+            <span className="font-bold text-slate-800">4.8 MB file (Subtle psychoacoustic quantization)</span>
           </div>
-          <div className="p-3 bg-white rounded-xl border border-slate-200">
-            <span className="font-bold text-slate-800 block">Blog Content Width</span>
-            <span className="text-slate-500 font-mono">1200×800 px</span>
+          <div className="flex justify-between items-center py-1 border-b border-slate-200 font-mono">
+            <span>Quality Setting: 85% (Recommended)</span>
+            <span className="font-bold text-emerald-700">720 KB file (6.6x smaller, visually identical)</span>
           </div>
-          <div className="p-3 bg-white rounded-xl border border-slate-200">
-            <span className="font-bold text-slate-800 block">Square E-commerce</span>
-            <span className="text-slate-500 font-mono">1000×1000 px</span>
+          <div className="flex justify-between items-center py-1 font-mono">
+            <span>Quality Setting: 60%</span>
+            <span className="font-bold text-amber-700">380 KB file (Mild color banding in dark gradients)</span>
           </div>
         </div>
       </section>
 
-      {/* Chapter 4: Practical Checklist */}
-      <section className="space-y-4">
-        <h2 className="text-2xl font-bold text-slate-900 tracking-tight">
-          4. The Pre-Publishing Image Checklist
+      {/* Frequently Asked Questions */}
+      <section className="space-y-4 border-t border-slate-200 pt-8">
+        <div className="flex items-center gap-2">
+          <HelpCircle className="w-5 h-5 text-indigo-600" />
+          <h2 className="text-2xl font-bold text-slate-900 tracking-tight">
+            Image Optimization Frequently Asked Questions
+          </h2>
+        </div>
+
+        <div className="space-y-3 text-xs sm:text-sm">
+          <div className="bg-white border border-slate-200 rounded-2xl p-4 space-y-1.5">
+            <h3 className="font-bold text-slate-900">What is the most effective format for modern web speed?</h3>
+            <p className="text-slate-600 leading-relaxed">
+              WebP offers the best overall combination of high compression efficiency, universal modern browser support (97%+), and full alpha transparency support.
+            </p>
+          </div>
+
+          <div className="bg-white border border-slate-200 rounded-2xl p-4 space-y-1.5">
+            <h3 className="font-bold text-slate-900">When should I convert multiple images to PDF instead of a ZIP archive?</h3>
+            <p className="text-slate-600 leading-relaxed">
+              Use "Images to PDF" when you need a cohesive document that displays images sequentially across individual pages, such as receipts, portfolios, scanned contracts, or school assignments. Use a ZIP archive when you need each converted image as a separate graphic asset.
+            </p>
+          </div>
+
+          <div className="bg-white border border-slate-200 rounded-2xl p-4 space-y-1.5">
+            <h3 className="font-bold text-slate-900">How does FileBatch prevent browser crashes with large batches?</h3>
+            <p className="text-slate-600 leading-relaxed">
+              FileBatch processes conversions in controlled concurrency queues (3 to 6 parallel workers) and revokes temporary in-memory object URLs immediately after download, protecting your device from memory exhaustion.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Internal Links: Related Guides */}
+      <section className="space-y-4 border-t border-slate-200 pt-8">
+        <h2 className="text-lg font-bold text-slate-900 tracking-tight">
+          Explore Specific Format Handbooks
         </h2>
-        <div className="p-5 bg-white border border-slate-200 rounded-2xl shadow-2xs space-y-3 text-xs sm:text-sm">
-          <div className="flex items-start gap-2.5">
-            <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
-            <div>
-              <span className="font-bold text-slate-900">Match the format to image content:</span>
-              <span className="text-slate-600 ml-1">Use WebP/JPG for photographic gradients; use PNG for sharp UI and typography.</span>
-            </div>
-          </div>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+          <button
+            type="button"
+            onClick={() => {
+              window.location.hash = 'guide-jpg-to-png';
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            className="p-3.5 bg-white border border-slate-200 rounded-xl hover:border-indigo-300 text-left transition-colors group"
+          >
+            <span className="font-bold text-slate-900 block group-hover:text-indigo-600">JPG to PNG Guide</span>
+            <span className="text-slate-500 mt-1 block">Learn when to halt lossy compression and enable transparent layers.</span>
+          </button>
 
-          <div className="flex items-start gap-2.5">
-            <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
-            <div>
-              <span className="font-bold text-slate-900">Target 85% compression:</span>
-              <span className="text-slate-600 ml-1">The 85% quality factor delivers virtually indistinguishable visual fidelity while avoiding the excessive bloat of 100% encoding.</span>
-            </div>
-          </div>
+          <button
+            type="button"
+            onClick={() => {
+              window.location.hash = 'guide-png-to-webp';
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            className="p-3.5 bg-white border border-slate-200 rounded-xl hover:border-indigo-300 text-left transition-colors group"
+          >
+            <span className="font-bold text-slate-900 block group-hover:text-indigo-600">PNG to WebP Guide</span>
+            <span className="text-slate-500 mt-1 block">Slash file weight by up to 45% while preserving crisp alpha transparency.</span>
+          </button>
 
-          <div className="flex items-start gap-2.5">
-            <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
-            <div>
-              <span className="font-bold text-slate-900">Keep confidential files local:</span>
-              <span className="text-slate-600 ml-1">Always use client-side tools like FileBatch so company financial charts, NDA materials, or personal photos never leave your device.</span>
-            </div>
-          </div>
+          <button
+            type="button"
+            onClick={() => {
+              window.location.hash = 'guide-webp-to-jpg';
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            className="p-3.5 bg-white border border-slate-200 rounded-xl hover:border-indigo-300 text-left transition-colors group"
+          >
+            <span className="font-bold text-slate-900 block group-hover:text-indigo-600">WebP to JPG Guide</span>
+            <span className="text-slate-500 mt-1 block">Restore universal compatibility for legacy software and print shops.</span>
+          </button>
         </div>
       </section>
 
       {/* AdSense In-Article Notice Slot */}
       <AdSenseNotice slotName="In-Article Guide Banner" />
 
-      {/* CTA Box */}
+      {/* CTA Section */}
       <div className="bg-indigo-600 text-white rounded-3xl p-8 sm:p-10 text-center space-y-5 shadow-lg">
-        <h2 className="text-2xl font-bold">Optimize Your Images in Bulk Today</h2>
+        <h2 className="text-2xl font-bold">Start Optimizing Your Images with FileBatch</h2>
         <p className="text-sm text-indigo-100 max-w-md mx-auto">
-          Convert up to 100 images in parallel with customizable quality and zero cloud uploads.
+          Process up to 100 images per batch locally in your browser with zero server uploads.
         </p>
         <div>
           <button
@@ -214,7 +217,7 @@ export const ImageOptimizationGuide: React.FC<GuideProps> = ({ onStartConverting
             type="button"
             className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-bold text-sm bg-white text-indigo-700 hover:bg-indigo-50 shadow-md transition-all"
           >
-            <span>Launch FileBatch Converter</span>
+            <span>Open Bulk File Converter</span>
             <ArrowRight className="w-4 h-4" />
           </button>
         </div>

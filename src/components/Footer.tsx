@@ -1,7 +1,7 @@
 import React from 'react';
 import { BRAND_CONFIG } from '../config/brand';
 import { PageId, SupportedFormat } from '../types';
-import { Layers, ShieldCheck, Mail, ArrowUpRight } from 'lucide-react';
+import { Layers, ShieldCheck } from 'lucide-react';
 
 interface FooterProps {
   onNavigate: (page: PageId) => void;
@@ -25,7 +25,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onSelectFormat }) =>
   return (
     <footer className="bg-white border-t border-slate-200 text-slate-500 text-xs py-14">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-        {/* Main 4-column footer grid */}
+        {/* Main 5-column footer grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Brand Col */}
           <div className="lg:col-span-2 space-y-4">
@@ -40,20 +40,35 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onSelectFormat }) =>
             </div>
 
             <p className="text-xs text-slate-500 leading-relaxed max-w-sm">
-              The high-performance, private bulk image converter. Convert hundreds of JPG, PNG, and WebP files locally inside your browser window without uploading files to remote servers.
+              The high-performance, private bulk image converter and PDF tool suite. Convert hundreds of JPG, PNG, and WebP files locally inside your browser window without uploading files to remote servers.
             </p>
 
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 text-[11px] font-semibold border border-emerald-200/60">
               <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-              <span>100% Client-Side Architecture</span>
+              <span>100% Client-Side Processing Architecture</span>
+            </div>
+
+            {/* MK Labs Ownership & Official Logo */}
+            <div className="pt-2 flex items-center gap-3">
+              <img
+                src="/assets/aistudio/MK_Labs_703312e1.jpg"
+                alt="MK Labs logo"
+                className="w-8 h-8 rounded-lg object-contain shadow-xs border border-slate-200 bg-black shrink-0"
+                width={32}
+                height={32}
+                loading="lazy"
+              />
+              <span className="text-xs font-medium text-slate-700">
+                FileBatch is a product by MK Labs.
+              </span>
             </div>
           </div>
 
           {/* Tools & Formats */}
           <div className="space-y-3">
-            <h4 className="font-bold text-slate-900 text-xs uppercase tracking-wider">
-              Image Tools
-            </h4>
+            <h3 className="font-bold text-slate-900 text-xs uppercase tracking-wider">
+              File Tools
+            </h3>
             <ul className="space-y-2">
               <li>
                 <button
@@ -98,7 +113,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onSelectFormat }) =>
                   className="hover:text-rose-600 transition-colors text-left font-semibold text-rose-600 flex items-center gap-1"
                 >
                   <span>Images to PDF Converter</span>
-                  <span className="text-[9px] px-1 rounded bg-rose-50 text-rose-700 uppercase font-mono">New</span>
+                  <span className="text-[9px] px-1 rounded bg-rose-50 text-rose-700 uppercase font-mono">PDF</span>
                 </button>
               </li>
             </ul>
@@ -106,9 +121,9 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onSelectFormat }) =>
 
           {/* Educational Guides */}
           <div className="space-y-3">
-            <h4 className="font-bold text-slate-900 text-xs uppercase tracking-wider">
+            <h3 className="font-bold text-slate-900 text-xs uppercase tracking-wider">
               Optimization Guides
-            </h4>
+            </h3>
             <ul className="space-y-2">
               <li>
                 <button
@@ -151,9 +166,9 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onSelectFormat }) =>
 
           {/* Company & Legal */}
           <div className="space-y-3">
-            <h4 className="font-bold text-slate-900 text-xs uppercase tracking-wider">
+            <h3 className="font-bold text-slate-900 text-xs uppercase tracking-wider">
               Company & Legal
-            </h4>
+            </h3>
             <ul className="space-y-2">
               <li>
                 <button
@@ -161,7 +176,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onSelectFormat }) =>
                   onClick={() => handleNav('about')}
                   className="hover:text-indigo-600 transition-colors text-left"
                 >
-                  About Us
+                  About Us (MK Labs)
                 </button>
               </li>
               <li>
@@ -198,14 +213,14 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onSelectFormat }) =>
         {/* AdSense & Legal Disclaimer Footnote */}
         <div className="pt-8 border-t border-slate-100 flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] text-slate-400">
           <div>
-            © {new Date().getFullYear()} {BRAND_CONFIG.company.legalName}. All rights reserved.
+            © {new Date().getFullYear()} FileBatch. Developed by MK Labs. All rights reserved.
           </div>
-          <div className="flex items-center gap-4 text-slate-500">
+          <div className="flex items-center gap-4 text-slate-500 flex-wrap">
             <span>Inquiries: <a href={`mailto:${BRAND_CONFIG.company.contactEmail}`} className="underline hover:text-indigo-600">{BRAND_CONFIG.company.contactEmail}</a></span>
             <span>•</span>
             <span>Zero Server Uploads</span>
             <span>•</span>
-            <span>No Cookies On Image Files</span>
+            <span>100% In-Browser</span>
           </div>
         </div>
       </div>

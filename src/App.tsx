@@ -37,6 +37,7 @@ import { PreviewModal } from './components/PreviewModal';
 import { ConfirmationModal } from './components/ConfirmationModal';
 import { AdSenseNotice } from './components/AdSenseNotice';
 import { SEOHead } from './components/SEOHead';
+import { FaqSection, FAQ_DATA } from './components/FaqSection';
 
 // Pages
 import { AboutUs } from './pages/AboutUs';
@@ -767,22 +768,44 @@ export default function App() {
           /* Main Image Converter Application View */
           <>
             <SEOHead
-              title={`${BRAND_CONFIG.name} — Bulk Image Converter & PDF Suite | 100% In-Browser`}
-              description="Convert hundreds of JPG, PNG, and WebP images directly in your browser, compile images to multi-page PDF, or extract PDF pages into high-resolution images with zero server uploads."
+              title="FileBatch — Free Bulk Image Converter & PDF Tools | MK Labs"
+              description="Convert JPG, PNG, and WebP images in bulk, combine photos to PDF, or extract PDF pages into high-res images in your browser with zero server uploads."
               canonicalPath=""
               type="website"
               jsonLd={{
                 '@context': 'https://schema.org',
-                '@type': 'WebApplication',
-                'name': BRAND_CONFIG.name,
-                'applicationCategory': 'MultimediaApplication',
-                'operatingSystem': 'All',
-                'description': 'Convert hundreds of JPG, PNG, and WebP images locally, combine images to PDF, or extract PDF pages into images with zero server uploads.',
-                'offers': {
-                  '@type': 'Offer',
-                  'price': '0',
-                  'priceCurrency': 'USD',
-                },
+                '@graph': [
+                  {
+                    '@type': 'WebApplication',
+                    'name': 'FileBatch',
+                    'url': 'https://filebatch.netlify.app/',
+                    'applicationCategory': 'MultimediaApplication',
+                    'operatingSystem': 'All',
+                    'description':
+                      'Convert JPG, PNG, and WebP images in bulk, combine photos to PDF, or extract PDF pages to high-res images with zero server uploads.',
+                    'offers': {
+                      '@type': 'Offer',
+                      'price': '0',
+                      'priceCurrency': 'USD',
+                    },
+                    'publisher': {
+                      '@type': 'Organization',
+                      'name': 'MK Labs',
+                      'logo': 'https://filebatch.netlify.app/assets/aistudio/MK_Labs_703312e1.jpg',
+                    },
+                  },
+                  {
+                    '@type': 'FAQPage',
+                    'mainEntity': FAQ_DATA.map((faq) => ({
+                      '@type': 'Question',
+                      'name': faq.question,
+                      'acceptedAnswer': {
+                        '@type': 'Answer',
+                        'text': faq.answer,
+                      },
+                    })),
+                  },
+                ],
               }}
             />
             {/* Hero Section */}
@@ -1003,9 +1026,10 @@ export default function App() {
             </div>
 
             {/* Educational & Explanatory Sections */}
-            <SupportedFormats />
+            <SupportedFormats onNavigate={handleNavigate} />
             <HowItWorks />
             <PrivacySection />
+            <FaqSection onNavigate={handleNavigate} />
           </>
         )}
       </main>

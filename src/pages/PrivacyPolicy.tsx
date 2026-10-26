@@ -9,9 +9,20 @@ export const PrivacyPolicy: React.FC = () => {
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-12 text-slate-700 animate-in fade-in duration-200">
       <SEOHead
-        title={`Privacy Policy & Advertising Disclosures – ${BRAND_CONFIG.name}`}
-        description={`Read the official Privacy Policy for ${BRAND_CONFIG.name}. Learn about our 100% client-side file privacy, Google AdSense cookies disclosure, and GDPR/CCPA data protection.`}
+        title="Privacy Policy — 100% In-Browser File Safety | FileBatch"
+        description="Review the FileBatch privacy policy. Understand how our 100% client-side architecture guarantees your images and PDFs never leave your device."
         canonicalPath="#privacy"
+        type="website"
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@type': 'WebPage',
+          'name': 'FileBatch Privacy Policy',
+          'description': 'Privacy policy explaining local in-browser file processing and zero server uploads.',
+          'publisher': {
+            '@type': 'Organization',
+            'name': 'MK Labs',
+          },
+        }}
       />
       {/* Header */}
       <div className="space-y-4 border-b border-slate-200 pb-8">

@@ -9,9 +9,20 @@ export const TermsOfService: React.FC = () => {
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-12 text-slate-700 animate-in fade-in duration-200">
       <SEOHead
-        title={`Terms of Service & Copyright Ownership – ${BRAND_CONFIG.name}`}
-        description={`Review the Terms of Service for ${BRAND_CONFIG.name}. Learn about user image copyright retention, acceptable use guidelines, and liability terms.`}
+        title="Terms of Service & Copyright Ownership | FileBatch"
+        description="Review the FileBatch Terms of Service. Retain 100% copyright and ownership of all processed images with our client-side conversion architecture."
         canonicalPath="#terms"
+        type="website"
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@type': 'WebPage',
+          'name': 'FileBatch Terms of Service',
+          'description': 'Terms of Service governing use of the FileBatch client-side file converter.',
+          'publisher': {
+            '@type': 'Organization',
+            'name': 'MK Labs',
+          },
+        }}
       />
       {/* Header */}
       <div className="space-y-4 border-b border-slate-200 pb-8">

@@ -43,9 +43,20 @@ export const ContactUs: React.FC = () => {
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-16 animate-in fade-in duration-200">
       <SEOHead
-        title={`Contact ${BRAND_CONFIG.name} – Support, Technical Feedback & Business Inquiries`}
-        description={`Get in touch with the ${BRAND_CONFIG.name} team for technical assistance, partnership opportunities, or feedback. We respond within 24 to 48 business hours.`}
+        title="Contact FileBatch — Support & Feedback | MK Labs"
+        description="Contact the FileBatch team at MK Labs for technical support, feature feedback, or partnership inquiries. We respond within 24 to 48 business hours."
         canonicalPath="#contact"
+        type="website"
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@type': 'ContactPage',
+          'name': 'Contact FileBatch',
+          'description': 'Contact page for FileBatch support and inquiries at MK Labs.',
+          'publisher': {
+            '@type': 'Organization',
+            'name': 'MK Labs',
+          },
+        }}
       />
       {/* Header */}
       <div className="text-center space-y-4 max-w-2xl mx-auto">
